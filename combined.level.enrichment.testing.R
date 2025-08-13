@@ -1763,3 +1763,138 @@ correction_meth = "g_SCS"
 timepoint = "t30"
 outlist = enrich.cust(cross,experiment, timepoint, subset, chrom.number, hrange, thresh = 0.05, correction_meth = "g_SCS")
 ##
+
+##
+df = readRDS("/Users/noahalexander/repeat_fine_mapping/combined/3004/nacl/t0/hotspot_peaks.RDS")
+df = df$combined
+dim(df)
+df = subset(df, df$chr == "chrXVI")
+dim(df)
+df = subset(df, df$in.hotspot == "TRUE")
+dim(df)
+names(table(df$bin))
+
+hrange=c(1) 
+names(table(df$bin))[hrange]
+df = subset(df, df$bin %in% names(table(df$bin))[hrange])
+names(table(df$bin))
+dim(df)
+
+cross="3004"
+experiment = "nacl"
+subset = "combined"
+chrom.number = "chrXVI"
+hrange=c(1) 
+thresh = 0.05
+correction_meth = "g_SCS"
+timepoint = "t0"
+outlist = enrich.cust(cross,experiment, timepoint, subset, chrom.number, hrange, thresh = 0.05, correction_meth = "g_SCS")
+##
+
+##
+df = readRDS("/Users/noahalexander/repeat_fine_mapping/combined/3004/nacl/t30/hotspot_peaks.RDS")
+df = df$combined
+dim(df)
+df = subset(df, df$chr == "chrXVI")
+dim(df)
+df = subset(df, df$in.hotspot == "TRUE")
+dim(df)
+names(table(df$bin))
+
+hrange=c(1) 
+names(table(df$bin))[hrange]
+df = subset(df, df$bin %in% names(table(df$bin))[hrange])
+names(table(df$bin))
+dim(df)
+
+cross="3004"
+experiment = "nacl"
+subset = "combined"
+chrom.number = "chrXVI"
+hrange=c(1) 
+thresh = 0.05
+correction_meth = "g_SCS"
+timepoint = "t30"
+outlist = enrich.cust(cross,experiment, timepoint, subset, chrom.number, hrange, thresh = 0.05, correction_meth = "g_SCS")
+##
+
+##
+df = readRDS("/Users/noahalexander/repeat_fine_mapping/combined/A/nacl/t0/hotspot_peaks.RDS")
+df = df$combined
+dim(df)
+df = subset(df, df$chr == "chrXVI")
+dim(df)
+df = subset(df, df$in.hotspot == "TRUE")
+dim(df)
+names(table(df$bin))
+
+hrange=c(1) 
+names(table(df$bin))[hrange]
+df = subset(df, df$bin %in% names(table(df$bin))[hrange])
+names(table(df$bin))
+dim(df)
+
+cross="A"
+experiment = "nacl"
+subset = "combined"
+chrom.number = "chrXVI"
+hrange=c(1) 
+thresh = 0.05
+correction_meth = "g_SCS"
+timepoint = "t0"
+outlist = enrich.cust(cross,experiment, timepoint, subset, chrom.number, hrange, thresh = 0.05, correction_meth = "g_SCS")
+##
+
+##
+df = readRDS("/Users/noahalexander/repeat_fine_mapping/combined/A/sp/t10/hotspot_peaks.RDS")
+df = df$combined
+dim(df)
+df = subset(df, df$chr == "chrXVI")
+dim(df)
+df = subset(df, df$in.hotspot == "TRUE")
+dim(df)
+names(table(df$bin))
+
+hrange=c(1) 
+names(table(df$bin))[hrange]
+df = subset(df, df$bin %in% names(table(df$bin))[hrange])
+names(table(df$bin))
+dim(df)
+
+cross="A"
+experiment = "sp"
+subset = "combined"
+chrom.number = "chrXVI"
+hrange=c(1) 
+thresh = 0.05
+correction_meth = "g_SCS"
+timepoint = "t10"
+outlist = enrich.cust(cross,experiment, timepoint, subset, chrom.number, hrange, thresh = 0.05, correction_meth = "g_SCS")
+##
+
+##
+df = readRDS("/Users/noahalexander/repeat_fine_mapping/combined/A/nacl/t30/hotspot_peaks.RDS")
+df = df$combined
+dim(df)
+df = subset(df, df$chr == "chrXVI")
+dim(df)
+df = subset(df, df$in.hotspot == "TRUE")
+dim(df)
+names(table(df$bin))
+
+hrange=c(1) 
+names(table(df$bin))[hrange]
+df = subset(df, df$bin %in% names(table(df$bin))[hrange])
+names(table(df$bin))
+dim(df)
+
+cross="A"
+experiment = "nacl"
+subset = "combined"
+chrom.number = "chrXVI"
+hrange=c(1) 
+thresh = 0.05
+correction_meth = "g_SCS"
+timepoint = "t30"
+outlist = enrich.cust(cross,experiment, timepoint, subset, chrom.number, hrange, thresh = 0.05, correction_meth = "g_SCS")
+##
