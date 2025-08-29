@@ -16,5 +16,8 @@ in order of use through the analysis:
 11. 3004.enrichment.testing.R: same as above but for the CBSxYJM cross.
 
 12. cbsxyjm.state.qtl.granges.R: modify ESR activity QTL confidence intervals to be at most 15kb.
-13. hotspot.bins.vis.R: generate .bed files to upload to a genome browser for visualization.
-14. esr.qtl.lod.traces.R: generate LOD traces for ESR activity QTL mapping results
+note: add same for BYxRM salt and sp experiments. 
+    
+14. hotspot.bins.vis.R: generate .bed files of 50kb bins classified as eQTL hotspots to upload to a genome browser for visualization.
+    
+15. esr.qtl.lod.traces.R: generate LOD traces for ESR activity QTL mapping results conducted in all six cross:enviornment combinations. 
