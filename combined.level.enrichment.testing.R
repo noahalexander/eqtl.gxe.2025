@@ -1,3 +1,5 @@
+#very repetitive code to conduct enrichment testing using hotspot linkages 
+
 
 df = readRDS("/Users/noahalexander/repeat_fine_mapping/combined/A/nacl/t30/hotspot_peaks.RDS")
 df = df$combined
