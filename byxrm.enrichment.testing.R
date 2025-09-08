@@ -1,5 +1,10 @@
 #very repetitive code to conduct enrichment testing using hotspot linkages 
 
+library(gprofiler2)
+library(ggplot2)
+
+results = readRDS("/Users/noahalexander/s.cer.ensembl.112.RDS")
+
 df = readRDS("/Users/noahalexander/repeat_fine_mapping/combined/A/sp/t10/hotspot_peaks.RDS")
 df = df$III
 dim(df)
