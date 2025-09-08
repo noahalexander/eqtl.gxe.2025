@@ -1,3 +1,5 @@
+#functions for monocle objects. mono.aucell() is used for ESR activity quantification. 
+
 library(dplyr)
 library(AUCell)
 
