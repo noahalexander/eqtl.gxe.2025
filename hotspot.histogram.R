@@ -1,3 +1,5 @@
+#code to generate a histogram representing the number of contexts in which hotspots are observed 
+
 library(ComplexHeatmap)
 library(ggplot2)
 ######3004 t0
