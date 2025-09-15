@@ -20,4 +20,5 @@ note: add same for BYxRM salt and sp experiments.
     
 14. hotspot.bins.vis.R: generate .bed files of 50kb bins classified as eQTL hotspots to upload to a genome browser for visualization.
     
-15. esr.qtl.lod.traces.R: generate LOD traces for ESR activity QTL mapping results conducted in all six cross:enviornment combinations. 
+15. esr.qtl.lod.traces.R: generate LOD traces for ESR activity QTL mapping results conducted in all six cross:enviornment combinations.
+    
