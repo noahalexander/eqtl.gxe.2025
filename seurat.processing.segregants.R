@@ -3,74 +3,19 @@ library(sctransform)
 library(dplyr)
 library(stringr)
 
+
+#read in gene sets from the literature (cell cycle and enviornmental stress response) 
 df = read.csv("cc.genes.df.csv")
 df2 = read.delim("pbio.2004050.csv", sep = ",")
 esr.genes = word(df2$Annotation, 4)
 
+#sets of marker genes to be used when plotting 
 #new.markers = c("CLB4","WHI3","CIS3","CDC28")
 #more.markers = c("SIC1","CLB2", "CLN3", "SWI4", "CDC6", "CDC47", "KAR4", "AGA2", "SST2", "FUS1", "FAR1", "DBF2", "KIN3", "TEC1", "PCL9", "SST2", "CDC2", "POL1", "POL2", "MSH2", "MCM2", "MCM3", "DUB4", "GIC1", "CMN67", "NUF1","CIN8", "KAR9","TUB1", "TUB3")
-#clb2.cluster = 
-#more.markers = c("SIC1","CLB2", "CLN3", "SWI4", "CDC6", "CDC47", "KAR4", "AGA2", "SST2", "FUS1", "FAR1", "DBF2", "KIN3", "TEC1", "PCL9", "SST2", "CDC2", "POL1", "POL2", "MSH2", "MCM2", "MCM3", "DUB4", "GIC1", "CMN67", "NUF1","CIN8", "KAR9","TUB1", "TUB3")
-#more.markers = c("CLB2", "CLN3", "SWI4", "CDC6", "CDC47", "KAR4", "AGA2", "SST2", "FUS1", "FAR1", "DBF2", "KIN3", "TEC1", "PCL9", "SST2", "CDC2", "POL1", "POL2", "MSH2", "MCM2", "MCM3", "DUB4", "GIC1", "CMN67", "NUF1","CIN8", "KAR9","TUB1", "TUB3", "ARG1", "ARG3", "ARG5", "ARG8")
-
-#all.marker = c(more.markers, "MET2", "ECM1", "CLB2", 'CDC5', "CDC20",  "SWI5", "WSC4", "PMP1", "PMA1" , "PMA2", "CLB2", "CLB1", "CLB2", "SWI5",  'BUD4',"ALG7", "FKS1", 'GAS1', 'GOG5', 'PMT1',  'PMI40', "ARG1", "ARG3", "ARG5", "ARG8", "MET17", "MET2", "ECM17", "CLB2", "CDC5", "CDC20",  "SWI5", "WSC4", "PMP1","PMA1" , "PMA2",  "CLB2",
-#  "CLB1", "CLB2", "SWI5", 'BUD4', 'ASE1', "KIP2", "MOB1", "NUM1", 'YCL012W', "BUD3", "CHA1", "YCL063W", "YLR057W",  "YML033W" , "MCM2", 'MCM3', "CDC54", "CDC46", 'MCM6',  "CDC47", 'KAR4', "AGA1", "SST2",  "FUS1", "CLB4", "BUD3", "CPR8", "PRO2", "YCL012W", "YCL063W", "YGL217C", "YNL043C", "YDR130C",  'YOL030W', "CDC2", "POL1",  "POL2", "CDC21", "CDC45", "PMS1",
-#  "MSH2", "MCM2", "MCM3", "CDC54", "CDC47", "MCM6", "CDC47",  "CDC54",  "CDC6", "BUD3", "BUD4", "BUD8", 'BUD9', "BEM1", 'GIC1', 'MSB1', 'MSB2',
-#"CNM67", "NUF1", "SPC42", "SPC97", 'SPC98', 'TUB4', "SPC34", "BIM1", "BUB1", "IPL1", 'KAR3', "SLK19", "CIN8", "KAR9", "KIP1", "STU2",  "VIK1", 'BUB2', "CIK1", 'KIP2', "KIP3",  "NUM1", "TUB2", 'ASE1', "AUA1",  "MEP3", "HXT1", "RGT2", "FET3" , "FTR1", "PHO3" , "PHO8", "PS4",  "SSP2")
 
 
-#MET2. Finally, ECM1
-#CLB2, CDC5, CDC20, and SWI5. 
-#WSC4, PMP1
-#PMA1 and PMA2. The CLB2
-#CLB1, CLB2, SWI5, and BUD4,
-#ALG7, FKS1, GAS1, GOG5, PMT1, and PMI40,
-#
-#ARG1, ARG3, ARG5,6 and ARG8)
-#more.markers = c("CLB2", "CLN3", "SWI4", "CDC6", "CDC47", "KAR4", "AGA2", "SST2", "FUS1", "FAR1", "DBF2", "KIN3", "TEC1", "PCL9", "SST2", "CDC2", "POL1", "POL2", "MSH2", "MCM2", "MCM3", "DUB4", "GIC1", "CMN67", "NUF1","CIN8", "KAR9","TUB1", "TUB3", "ARG1", "ARG3", "ARG5", "ARG8")
-#ALG7, FKS1, GAS1, GOG5, PMT1, and PMI40,
-#MET17, MET2, ECM17
-#CLB2, CDC5, CDC20, and SWI5.
-#WSC4, PMP1,PMA1 and PMA2. The CLB2
-#CLB1, CLB2, SWI5, and BUD4
-#ASE1
-#KIP2, MOB1, NUM1, YCL012W, BUD3, CHA1, YCL063W, YLR057W, and YML033W
-#MCM2, MCM3, CDC54, CDC46, MCM6, and CDC47
-#KAR4, AGA1, SST2, and FUS1
-#CLB4, BUD3, CPR8, PRO2, YCL012W, YCL063W, YGL217C, YNL043C, YDR130C, and YOL030W;
-#CDC2, POL1, and POL2
-#CDC21), and genes involved in initiation of DNA synthesis (e.g. CDC45) PMS1 and MSH2 
-#(MCM2, MCM3, CDC54, CDC47, MCM6, CDC47, and CDC54) and CDC6
-#BUD3, BUD4, BUD8, BUD9, BEM1, GIC1, MSB1, and MSB2)
-#CNM67, NUF1, SPC42, SPC97, SPC98, and TUB4), one (SPC34) 
-#BIM1, BUB1, IPL1, KAR3, and SLK19#
-#(CIN8, KAR9, KIP1, STU2, and VIK1) peak. Five genes peak during G2 (BUB2, CIK1, KIP2, KIP3, and NUM1), as well as the major 􏰂 tubulin TUB2. Finally, one gene (ASE1) reaches peak expres- sion during M.
-#(AUA1 and MEP3), sugars (e.g., HXT1 and RGT2), and iron (FET3 and FTR1). We also identified the acid phosphatases (e.g., PHO3 and PHO8).
-#PS4 and SSP2,
-
-#Nearly all of these genes reach peak expression late in the cell cycle during M and M/G1.
-#(GAP1), ammonia (AUA1 and MEP3), sugars (e.g., HXT1 and RGT2), and iron (FET3 and FTR1). We also identified the acid phosphatases (e.g., PHO3 and PHO8
   
-  #A number of genes associated with functions in spe- cialized developmental pathways show cell cycle reg- ulation. These include the apparently sporulation-spe- cific genes
-#  SPS4 and SSP2, which have peak expression in M and M/G1, respectively. These might represent cases such as SPO12,
-  
-#  SMC3, MCD1, PDS1, and PDS5
-#  PMA1
-  
-#  mat cluster?
-#    Y
-#  fks1
-#  histone
-#  met
-#  clb2
-#  mcm
-#  sic1
-  
-  
-  
-  
-  
-  
+#read in cell ranger output, in this case for BYxRM salt t0 sample 
   
   ####3051 t0
   pbmc_data <- Read10X(data.dir = "/Users/noahalexander/3051.correctref.nacl.segregants/t0/filtered_feature_bc_matrix/")
@@ -79,12 +24,11 @@ esr.genes = word(df2$Annotation, 4)
   #pbmc <- NormalizeData(pbmc)
   #dim(pbmc)
   
-  
+  #filter using gene expression only expected from alphas. This is to remove the small amount of alphas that make it into the experiment after FACS. 
   expr.mfalpha1 <- FetchData(object = pbmc, vars = c("MF%28ALPHA%291"))
   expr.dse2 <- FetchData(object = pbmc, vars = c("DSE2"))
   #expr.mfalpha2<- FetchData(object = pbmc, vars = c("MFA2"))
   hist(log(expr.mfalpha1$`MF%28ALPHA%291`, base = 2), breaks = 20)
-  
   dim(pbmc)
   pbmc = pbmc[, which(x = expr.mfalpha1 <= 2)]
   dim(pbmc)
@@ -92,7 +36,8 @@ esr.genes = word(df2$Annotation, 4)
   dim(pbmc)
   
   hist(log(pbmc@meta.data$nCount_RNA, base = 2))
-  
+
+  #conduct variance stabilization and PCA. In this case, PCA is conducted using only cell cycle genes. 
   pbmc= SCTransform(pbmc) 
   dim(pbmc)
   pbmc <- FindVariableFeatures(pbmc, selection.method = "vst", nfeatures = 2000, verbose = F)
