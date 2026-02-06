@@ -1,3 +1,4 @@
+library(stringr)
 ##################BYxRM salt experiment 
 
 df = readRDS("/Users/noahalexander/repeat_fine_mapping/combined/A/nacl/t0/state_pheno_LODs.RDS")
