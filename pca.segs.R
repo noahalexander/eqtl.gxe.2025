@@ -1,3 +1,7 @@
+library(viridis)
+library(ggplot2)
+library(monocle3)
+
 cds.3051.nacl.t0 <- load_mm_data(mat_path = "/Users/noahalexander/seg_cellranger_report/t0/filtered_feature_bc_matrix/matrix.mtx", 
   feature_anno_path = "/Users/noahalexander/seg_cellranger_report/t0/filtered_feature_bc_matrix/features.tsv", 
   cell_anno_path = "/Users/noahalexander/seg_cellranger_report/t0/filtered_feature_bc_matrix/barcodes.tsv")
@@ -41,9 +45,14 @@ cds = mono.aucell(cds)
 
 plot_cells(cds, reduction_method = "PCA", label_cell_groups = F, color_cells_by = "sample")
 
+cds@colData$RiBi_Activity = cds@colData$ribi.aucell
+cds@colData$RP_Activity = cds@colData$rp.aucell
+cds@colData$iESR_Activity = cds@colData$iesr.aucell
+
 
 #######################plotting
 
+#samples
 p <- plot_cells(
   cds,
   reduction_method = "PCA",
@@ -60,22 +69,25 @@ p +
     legend.text = element_text(size = 18)      # Increase legend text/label size
   )
 
-
+#ribi aucell values
 p <- plot_cells(
-  cds,
-  reduction_method = "PCA",
-  label_cell_groups = FALSE,
-  color_cells_by = "RiBi_Activity"
+    cds,
+    reduction_method = "PCA",
+    label_cell_groups = FALSE,
+    color_cells_by = "RiBi_Activity"
 )
 
 p +
-  labs(x = "PC1", y = "PC2") +  # Set axis labels
-  theme(
-    axis.title.x = element_text(size = 22),    # Increase x-axis label font size
-    axis.title.y = element_text(size = 22),    # Increase y-axis label font size
-    legend.title = element_text(size = 20),    # Increase legend title size
-    legend.text = element_text(size = 18)      # Increase legend text/label size
-  )
+    labs(x = "PC1", y = "PC2") +
+    guides(colour = guide_colourbar(title = "RiBi Activity")) +  # <- change title only
+    theme(
+        axis.title.x = element_text(size = 22),
+        axis.title.y = element_text(size = 22),
+        legend.title = element_text(size = 20),
+        legend.text = element_text(size = 18)
+    )
+
+#iesr aucell values
 
 p <- plot_cells(
   cds,
@@ -85,13 +97,34 @@ p <- plot_cells(
 )
 
 p +
-  labs(x = "PC1", y = "PC2") +  # Set axis labels
+  labs(x = "PC1", y = "PC2") +
+  guides(colour = guide_colourbar(title = "iESR Activity")) +  # <- change title only
   theme(
-    axis.title.x = element_text(size = 22),    # Increase x-axis label font size
-    axis.title.y = element_text(size = 22),    # Increase y-axis label font size
-    legend.title = element_text(size = 20),    # Increase legend title size
-    legend.text = element_text(size = 18)      # Increase legend text/label size
+    axis.title.x = element_text(size = 22),
+    axis.title.y = element_text(size = 22),
+    legend.title = element_text(size = 20),
+    legend.text = element_text(size = 18)
   )
+
+
+#rp aucell values
+
+p <- plot_cells(
+    cds,
+    reduction_method = "PCA",
+    label_cell_groups = FALSE,
+    color_cells_by = "RP_Activity"
+)
+
+p +
+    labs(x = "PC1", y = "PC2") +
+    guides(colour = guide_colourbar(title = "RP Activity")) +  # <- change title only
+    theme(
+        axis.title.x = element_text(size = 22),
+        axis.title.y = element_text(size = 22),
+        legend.title = element_text(size = 20),
+        legend.text = element_text(size = 18)
+    )
 
 
 
