@@ -2,6 +2,7 @@ library(monocle3)
 library(ggplot2)
 library(viridis)
 library(patchwork)
+library(dplyr)
 
 cds.3051.nacl.t0 <- load_mm_data(mat_path = "/Users/noahalexander/seg_cellranger_report/t0/filtered_feature_bc_matrix/matrix.mtx", 
   feature_anno_path = "/Users/noahalexander/seg_cellranger_report/t0/filtered_feature_bc_matrix/features.tsv", 
@@ -34,8 +35,8 @@ colData(cds)$sample <- dplyr::recode(
   as.character(colData(cds)$sample),
   '1' = 'NaCl t0',
   '2' = 'NaCl t30',
-  '3' = 'Stationary Phase t0',
-  '4' = 'Stationary Phase t10'
+  '3' = 'SP t0',
+  '4' = 'SP t10'
   # Add more mappings as needed
 )
 
